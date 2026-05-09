@@ -1,0 +1,14 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<MvcRentApp.Models.Bid>
+<div id="results">
+    <h4 style="color: red;"> Все заявители на аренду офисов по адресу "@Model.First().Adress"</h4>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li style="color: red;">@item.Name</li>
+        }
+    </ul>
+</div>

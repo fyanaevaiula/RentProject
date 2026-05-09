@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewData["Title"] = "CreateBid";
+}
+
+@*<h1>CreateBid</h1>*@
+<h3>Существующие заявки</h3>
+<table class="table">
+    <tr>
+        <td><p>Имя</p></td>
+        <td><p>Электронная почта</p></td>
+        <td><p>Телефон</p></td>
+        <td><p>Бизнес-центр</p></td>
+        <td><p>Офис</p></td>
+    </tr>
+    @foreach (var c in ViewBag.Bids)
+    {
+        <tr>
+            <td><p>@c.Name</p></td>
+            <td><p>@c.Email</p></td>
+            <td><p>@c.Phone</p></td>
+            <td><p>@c.Adress</p></td>
+            <td><p>@c.Number</p></td>
+        </tr>
+    }
+    <table class="table">
+        <h3>Форма подачи заявки по аренде офисов</h3>
+        <form method="post" action="">
+            <table class="table">
+                <tr>
+                    <td><p>Введите свое имя</p></td>
+                    <td><input type="text" name="Name" /></td>
+                    <td><p>Введите адрес своей электронной почты </p></td>
+                    <td><input type="text" name="Email" /></td>
+                    <td><p>Введите номер своего телефона </p></td>
+                    <td><input type="text" name="Phone" /></td>
+                </tr>
+                <tr>
+                    <td><p>Выберите из списка бизнес-центр:</p></td>
+                    <td>
+                        <select name="Adress">
+                            @foreach (var cr in ViewBag.Offices)
+                            {
+                                <option>@cr.BuisnessCenterAdress</option>
+                            }
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><p>Выберите из списка офис:</p></td>
+                    <td>
+                        <select name="Number">
+                            @foreach (var cr in ViewBag.Offices)
+                            {
+                                <option>@cr.OfficeNumber</option>
+                            }
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Отправить" /></td>
+                    <td></td>
+                </tr>
+            </table>
+        </form>
